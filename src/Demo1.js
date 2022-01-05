@@ -11,7 +11,13 @@ import {startRegisterTimer,endRegisterTimer} from "../actions/RegisterTimer";
 import MakeTimer from '../../common/utils/timer';
 import OtherAuth from '../components/OtherAuth';
 import {withRouter} from "react-router-dom";
-
+const obserFunc = (str,callback)=>{
+    const cb = (callback) =>{
+        return '123'
+    }
+    window.addEventListener(str,cb)
+    return window.removeEventListener(str,cb)
+}
 
 @connect(
     state=>({counter:state.registerTimer, info: state.info}),
@@ -209,6 +215,7 @@ class Auth extends Component{
         window.addEventListener('test',() => {
             console.log('this is a test ')
         })
+        obserFunc('load',()=>{console.log('123')})
     }
 
     /*componentWillUnmount() {

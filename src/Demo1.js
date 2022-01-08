@@ -218,10 +218,13 @@ class Auth extends Component{
         obserFunc('load',()=>{console.log('123')})
     }
 
-    /*componentWillUnmount() {
+    componentWillUnmount() {
         document.removeEventListener("keydown", this.onKeyDown)
-        document.removeEventListener("key", this.verifyCodeHandler)
-    }*/
+        // document.removeEventListener("key", this.verifyCodeHandler)
+        window.removeEventListener('test',() => {
+            console.log('this is a test ')
+        })
+    }
 
     onKeyDown = (e) => {
         if(e.keyCode === 13){

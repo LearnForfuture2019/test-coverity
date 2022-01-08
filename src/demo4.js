@@ -6,17 +6,19 @@ const obserFunc = (str,callback)=>{
     window.addEventListener(str,cb)
     return window.removeEventListener(str,cb)
 }
-function Demo2() {
+function Demo3() {
     const [count, setCount] = useState(0)
     const handleTest = () => {
         console.log('this is a test')
     }
+
     useEffect(() => {
-        window.addEventListener('test',() => {
-            console.log('test')
-        })
+        window.addEventListener('test',handleTest)
         document.addEventListener('test2',handleTest)
-        return () => window.removeEventListener('test',handleTest)
+        return () => {
+            window.addEventListener('test',handleTest)
+            document.addEventListener('test2',handleTest)
+        }
     })
     return (
         <div>test</div>
